@@ -1,0 +1,37 @@
+import cv2
+
+v = cv2.VideoCapture('E:/PycharmProjects/curve_img./12.mp4')
+if v.isOpened():
+    rval, frame = v.read()
+else:
+    rval = False
+print rval
+
+
+问题：cv2正确安装，视频路径也是正确的，但rval返回值为False。
+原因：
+解决方法：
+
+
+
+这里我是参考StackOverFlow上OpenCV2.4解决办法
+http://stackoverflow.com/questions/11699298/opencv-2-4-videocapture-not-working-on-windows
+
+对于Opencv2：
+复制 D:\openCV\3rdparty\ffmpeg\下的全部opencv_ffmpeg.dll文件到D:\python27或者D:\anaconda等文件夹下，
+复制的时候还要整改名字，比如你的版本是opencv2.410,操作系统64位，那么就改成opencv_ffmpeg2410_64.dll
+
+
+
+对于OpenCV3：
+
+复制D:\opencv\opencv\build\x64\vc14\bin下所有前缀包含opencv_ffmpeg.dll的文件到D:\python27或者D:\anaconda等文件夹下。
+这个vc14还是vc12等看你的编译器是什么，可以都复制一下试试。
+
+例如，我的版本是Opencv3.10那么我找到文件是
+
+opencv_ffmpeg310_64.dll
+opencv_ffmpeg310.dll
+opencv_ffmpeg310d.dll
+
+复制到上面说的文件夹下就成功啦~
